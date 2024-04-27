@@ -25,16 +25,18 @@
         ];
     </script>
 
-    <div class="stuff">
-        <h1 style="font-size: 3rem;"><a href="https://discord.com/users/492729974026141697">Lyall's</a> stuff</h1>
-    </div>
+    <h1 class="heading"><a href="https://discord.com/users/492729974026141697">Lyall's</a> stuff</h1>
 
-    <div class="container">
-        <h1>Links</h1>
-        <div id="links"></div>
+    <div class="centered">
+        <div id="linkscontainer">
+            <h1>Links</h1>
+            <div id="links"></div>
+        </div>
 
-        <h1>Other links (FOR LYALL ONLY!!!)</h1>
-        <div id="otherlinks"></div>
+        <div id="otherlinkscontainer" style="display: none;">
+            <h1>Other links (FOR LYALL ONLY!!!)</h1>
+            <div id="otherlinks"></div>
+        </div>
     </div>
 
     <style>
@@ -48,6 +50,11 @@
             padding: 0;
             margin: 0;
             background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         * {
@@ -57,16 +64,17 @@
             text-decoration: none;
         }
 
-        .container {
+        .centered {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             height: 100%;
         }
 
-        .stuff {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .heading {
+            font-size: 3rem;
+            margin-bottom: auto;
         }
 
         a {
@@ -87,6 +95,7 @@
         }
 
         .linkcontainer {
+            overflow: hidden;
             margin: 10px;
             display: flex;
             align-items: center;
@@ -125,6 +134,13 @@
     <script>
         links.forEach(i => createLink(i.name, i.description, i.iconPath, i.subdomain ? `${location.protocol}//${i.subdomain}.${location.host}` : i.path, document.getElementById("links")));
         otherLinks.forEach(i => createLink(i.name, i.description, i.iconPath, i.subdomain ? `${location.protocol}//${i.subdomain}.${location.host}` : i.path, document.getElementById("otherlinks")));
+
+        let bgClicks = 0;
+        document.body.onclick = () => {
+            bgClicks++;
+            if (bgClicks >= 5) document.getElementById("otherlinkscontainer").style.display = "block";
+            setTimeout(() => bgClicks--, 1000);
+        }
 
         function createLink(name, description, iconPath, path, parent) {
             const otherLinks = document.getElementById("otherlinks");
