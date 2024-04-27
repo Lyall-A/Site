@@ -6,13 +6,92 @@
 </head>
 
 <body>
-    <h1 style="font-size: 3rem;">Lyall's stuff</h1>
+    <div class="stuff">
+        <h1 style="font-size: 3rem;">Lyall's stuff</h1>
+    </div>
 
-    <h1 >Links</h1>
-    <div id="links"></div>
+    <div class="container">
+        <h1>Links</h1>
+        <div id="links"></div>
 
-    <h1>Other links (FOR LYALL ONLY!!!)</h1>
-    <div id="otherlinks"></div>
+        <h1>Other links (FOR LYALL ONLY!!!)</h1>
+        <div id="otherlinks"></div>
+    </div>
+
+    <style>
+        :root {
+            --bg: rgb(66, 66, 66);
+            --lightgrey: rgb(180, 180, 180);
+            --white: rgb(238, 238, 238);
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: var(--bg);
+        }
+
+        * {
+            font-family: Arial;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .stuff {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #links,
+        #otherlinks {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .linkcontainer {
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 180px;
+            height: 200px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            background-color: rgb(90, 90, 90);
+            border: 2px solid var(--lightgrey);
+            border-radius: 30px;
+        }
+
+        .linkcontainer:hover {
+            transform: scale(105%);
+        }
+
+        .linkicon {
+            width: 100px;
+        }
+
+        .linkname {
+            font-size: 2rem;
+            margin-top: auto;
+        }
+
+        .linkdescription {
+            color: var(--lightgrey);
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+    </style>
 
     <script>
         createLink("Jellyfin", "Netflix 😍😍😍😍😍", "./assets/jellyfin.png", "jellyfin");
@@ -20,6 +99,10 @@
         createLink("Jellyseerr", "Media requests for Jellyfin", "./assets/jellyseerr.svg", "jellyseerr");
 
         createLink("Deluge", "Torrenting!!!", "./assets/deluge.png", "deluge", true, true);
+        createLink("Portainer", "DOCKER CONTAINERS!!!", "./assets/portainer.svg", "portainer", true, true);
+        createLink("Radarr", "MOVIES!!!", "./assets/radarr.png", "radarr", true, true);
+        createLink("Sonarr", "SHOWS!!!", "./assets/sonarr.svg", "sonarr", true, true);
+        createLink("Lidarr", "MUSIC!!!", "./assets/lidarr.svg", "lidarr", true, true);
 
         function createLink(name, description, iconPath, path, isSubdomain = true, isOther) {
             const links = document.getElementById("links");
@@ -51,74 +134,6 @@
             (isOther ? otherLinks : links).appendChild(containerDiv);
         }
     </script>
-
-    <style>
-        :root {
-            --bg: rgb(66, 66, 66);
-            --lightgrey: rgb(180, 180, 180);
-            --white: rgb(238, 238, 238);
-        }
-
-        body {
-            padding: 0;
-            margin: 0;
-            background-color: var(--bg);
-        }
-
-        * {
-            font-family: Arial;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .main {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #links,
-        #otherlinks {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .linkcontainer {
-            margin: 10px;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            min-width: 180px;
-            min-height: 200px;
-            padding: 20px;
-            cursor: pointer;
-            transition: transform 0.1s ease;
-            background-color: rgb(90, 90, 90);
-            border: 2px solid var(--lightgrey);
-            border-radius: 30px;
-        }
-
-        .linkcontainer:hover {
-            transform: scale(105%);
-        }
-
-        .linkicon {
-            width: 100px;
-            height: 100px;
-        }
-
-        .linkname {
-            font-size: 2rem;
-            margin-top: auto;
-        }
-
-        .linkdescription {
-            color: var(--lightgrey);
-            margin-top: 10px;
-            font-size: 1rem;
-        }
-    </style>
 </body>
 
 </html>
