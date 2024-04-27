@@ -4,16 +4,12 @@
         <title>Lyall's stuff</title>
     </head>
     <body>
-        <div id="container">
-
-        </div>
-
         <script>
-            createLink("Jellyfin", "./assets/jellyfin.png", "https://jellyfin.lyall.cam");
-            createLink("Jellyfin Vue", "./assets/jellyfin-vue.png", "https://jellyfin-vue.lyall.cam");
-            createLink("Jellyseerr", "./assets/jellyseerr.svg", "https://jellyseerr.lyall.cam");
+            createLink("Jellyfin", "Netflix 😍😍😍😍😍", "./assets/jellyfin.png", "https://jellyfin.lyall.cam");
+            createLink("Jellyfin Vue", "Netflix but with a different UI", "./assets/jellyfin-vue.png", "https://jellyfin-vue.lyall.cam");
+            createLink("Jellyseerr", "Media requests for Jellyfin", "./assets/jellyseerr.svg", "https://jellyseerr.lyall.cam");
 
-            function createLink(name, iconPath, path, isSubdomain = false) {
+            function createLink(name, description, iconPath, path, isSubdomain = false) {
                 const container = document.getElementById("container");
 
                 const containerDiv = document.createElement("div");
@@ -23,15 +19,20 @@
                 const img = document.createElement("img");
                 img.classList.add("linkimg");
                 img.src = iconPath;
-
-                const span = document.createElement("span");
-                span.classList.add("linkname");
-                span.innerHTML = name;
-
                 containerDiv.appendChild(img);
-                containerDiv.appendChild(span);
 
-                // container.appendChild(containerDiv);
+                const nameSpan = document.createElement("span");
+                nameSpan.classList.add("linkname");
+                nameSpan.innerHTML = name;
+                containerDiv.appendChild(nameSpan);
+
+                if (description) {
+                    const descriptionSpan = document.createElement("span");
+                    descriptionSpan.classList.add("linkdescription");
+                    descriptionSpan.innerHTML = description;
+                    containerDiv.appendChild(descriptionSpan);
+                }
+
                 document.body.appendChild(containerDiv);
             }
         </script>
@@ -39,7 +40,7 @@
         <style>
             :root {
                 --bg: rgb(66, 66, 66);
-                --lightgrey: rgb(146, 146, 146);
+                --lightgrey: rgb(180, 180, 180);
                 --white: rgb(238, 238, 238);
             }
 
@@ -53,6 +54,11 @@
                 align-items: center;
                 justify-content: center;
                 background-color: var(--bg);
+            }
+
+            * {
+                font-family: Arial;
+                text-align: center;
             }
 
             .linkcontainer {
@@ -80,11 +86,15 @@
             }
 
             .linkname {
-                font-family: Arial;
                 font-size: 2rem;
-                text-align: center;
                 margin-top: auto;
                 color: var(--white);
+            }
+
+            .linkdescription {
+                color: var(--lightgrey);
+                margin-top: 10px;
+                font-size: 1rem;
             }
         </style>
     </body>
