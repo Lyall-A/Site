@@ -118,30 +118,31 @@
             const links = document.getElementById("links");
             const otherLinks = document.getElementById("otherlinks");
 
-            const containerDiv = document.createElement("div");
-            containerDiv.classList.add("linkcontainer");
-            containerDiv.onclick = () => location.href = isSubdomain ? `${location.protocol}//${path}.${location.host}` : path;
+            const container = document.createElement("a");
+            container.classList.add("linkcontainer");
+            container.href = isSubdomain ? `${location.protocol}//${path}.${location.host}` : path;
+            container.target = "_blank";
 
             if (iconPath) {
                 const iconImg = document.createElement("img");
                 iconImg.classList.add("linkicon");
                 iconImg.src = iconPath;
-                containerDiv.appendChild(iconImg);
+                container.appendChild(iconImg);
             }
 
             const nameSpan = document.createElement("span");
             nameSpan.classList.add("linkname");
             nameSpan.innerHTML = name;
-            containerDiv.appendChild(nameSpan);
+            container.appendChild(nameSpan);
 
             if (description) {
                 const descriptionSpan = document.createElement("span");
                 descriptionSpan.classList.add("linkdescription");
                 descriptionSpan.innerHTML = description;
-                containerDiv.appendChild(descriptionSpan);
+                container.appendChild(descriptionSpan);
             }
 
-            (isOther ? otherLinks : links).appendChild(containerDiv);
+            (isOther ? otherLinks : links).appendChild(container);
         }
     </script>
 </body>
