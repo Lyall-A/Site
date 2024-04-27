@@ -1,101 +1,124 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Lyall's stuff</title>
-    </head>
-    <body>
-        <script>
-            createLink("Jellyfin", "Netflix 😍😍😍😍😍", "./assets/jellyfin.png", "https://jellyfin.lyall.cam");
-            createLink("Jellyfin Vue", "Netflix but with a different UI", "./assets/jellyfin-vue.png", "https://jellyfin-vue.lyall.cam");
-            createLink("Jellyseerr", "Media requests for Jellyfin", "./assets/jellyseerr.svg", "https://jellyseerr.lyall.cam");
 
-            function createLink(name, description, iconPath, path, isSubdomain = false) {
-                const container = document.getElementById("container");
+<head>
+    <title>Lyall's stuff</title>
+</head>
 
-                const containerDiv = document.createElement("div");
-                containerDiv.classList.add("linkcontainer");
-                containerDiv.onclick = () => location.href = isSubdomain ? `${path}.${location.host}` : path;
+<body>
+    <h1 style="font-size: 3rem;">Lyall's stuff</h1>
 
-                const img = document.createElement("img");
-                img.classList.add("linkimg");
-                img.src = iconPath;
-                containerDiv.appendChild(img);
+    <h1 >Links</h1>
+    <div id="links"></div>
 
-                const nameSpan = document.createElement("span");
-                nameSpan.classList.add("linkname");
-                nameSpan.innerHTML = name;
-                containerDiv.appendChild(nameSpan);
+    <h1>Other links (FOR LYALL ONLY!!!)</h1>
+    <div id="otherlinks"></div>
 
-                if (description) {
-                    const descriptionSpan = document.createElement("span");
-                    descriptionSpan.classList.add("linkdescription");
-                    descriptionSpan.innerHTML = description;
-                    containerDiv.appendChild(descriptionSpan);
-                }
+    <script>
+        createLink("Jellyfin", "Netflix 😍😍😍😍😍", "./assets/jellyfin.png", "jellyfin");
+        createLink("Jellyfin Vue", "Netflix but with a different UI", "./assets/jellyfin-vue.png", "jellyfin-vue");
+        createLink("Jellyseerr", "Media requests for Jellyfin", "./assets/jellyseerr.svg", "jellyseerr");
 
-                document.body.appendChild(containerDiv);
-            }
-        </script>
+        createLink("Deluge", "Torrenting!!!", "./assets/deluge.png", "deluge", true, true);
 
-        <style>
-            :root {
-                --bg: rgb(66, 66, 66);
-                --lightgrey: rgb(180, 180, 180);
-                --white: rgb(238, 238, 238);
+        function createLink(name, description, iconPath, path, isSubdomain = true, isOther) {
+            const links = document.getElementById("links");
+            const otherLinks = document.getElementById("otherlinks");
+
+            const containerDiv = document.createElement("div");
+            containerDiv.classList.add("linkcontainer");
+            containerDiv.onclick = () => location.href = isSubdomain ? `${path}.${location.host}` : path;
+
+            if (iconPath) {
+                const iconImg = document.createElement("img");
+                iconImg.classList.add("linkicon");
+                iconImg.src = iconPath;
+                containerDiv.appendChild(iconImg);
             }
 
-            body {
-                overflow: hidden;
-                padding: 0;
-                margin: 0;
-                width: 100vw;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: var(--bg);
+            const nameSpan = document.createElement("span");
+            nameSpan.classList.add("linkname");
+            nameSpan.innerHTML = name;
+            containerDiv.appendChild(nameSpan);
+
+            if (description) {
+                const descriptionSpan = document.createElement("span");
+                descriptionSpan.classList.add("linkdescription");
+                descriptionSpan.innerHTML = description;
+                containerDiv.appendChild(descriptionSpan);
             }
 
-            * {
-                font-family: Arial;
-                text-align: center;
-            }
+            (isOther ? otherLinks : links).appendChild(containerDiv);
+        }
+    </script>
 
-            .linkcontainer {
-                margin: 10px;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                width: 180px;
-                height: 200px;
-                padding: 20px;
-                cursor: pointer;
-                transition: transform 0.1s ease;
-                background-color: rgb(90, 90, 90);
-                border: 2px solid var(--lightgrey);
-                border-radius: 30px;
-            }
+    <style>
+        :root {
+            --bg: rgb(66, 66, 66);
+            --lightgrey: rgb(180, 180, 180);
+            --white: rgb(238, 238, 238);
+        }
 
-            .linkcontainer:hover {
-                transform: scale(105%);
-            }
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: var(--bg);
+        }
 
-            .linkimg {
-                width: 100px;
-                height: 100px;
-            }
+        * {
+            font-family: Arial;
+            text-align: center;
+            color: var(--white);
+        }
 
-            .linkname {
-                font-size: 2rem;
-                margin-top: auto;
-                color: var(--white);
-            }
+        .main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-            .linkdescription {
-                color: var(--lightgrey);
-                margin-top: 10px;
-                font-size: 1rem;
-            }
-        </style>
-    </body>
+        #links,
+        #otherlinks {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .linkcontainer {
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-width: 180px;
+            min-height: 200px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            background-color: rgb(90, 90, 90);
+            border: 2px solid var(--lightgrey);
+            border-radius: 30px;
+        }
+
+        .linkcontainer:hover {
+            transform: scale(105%);
+        }
+
+        .linkicon {
+            width: 100px;
+            height: 100px;
+        }
+
+        .linkname {
+            font-size: 2rem;
+            margin-top: auto;
+        }
+
+        .linkdescription {
+            color: var(--lightgrey);
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+    </style>
+</body>
+
 </html>
