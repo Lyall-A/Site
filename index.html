@@ -6,6 +6,22 @@
 </head>
 
 <body>
+    <script>
+                const links = [
+            { name: "Jellyfin", description: "Basically self-hosted Netflix", iconPath: "./assets/jellyfin.png", subdomain: "jellyfin" },
+            { name: "Jellyfin Vue", description: "Self-hosted Netflix but with a different UI", iconPath: "./assets/jellyfin-vue.png", subdomain: "jellyfin-vue" },
+            { name: "Jellyseerr", description: "Media requests for Jellyfin", iconPath: "./assets/jellyseerr.svg", subdomain: "jellyseerr" },
+        ];
+
+        const otherLinks = [
+            { name: "Deluge", description: "TORRENTING!!!", iconPath: "./assets/deluge.png", subdomain: "deluge" },
+            { name: "Portainer", description: "DOCKER CONTAINERS!!!", iconPath: "./assets/portainer.svg", subdomain: "portainer" },
+            { name: "Radarr", description: "MOVIES!!!", iconPath: "./assets/radarr.svg", subdomain: "radarr" },
+            { name: "Sonarr", description: "SHOWS!!!", iconPath: "./assets/sonarr.svg", subdomain: "sonarr" },
+            { name: "Lidarr", description: "MUSIC!!!", iconPath: "./assets/lidarr.svg", subdomain: "lidarr" },
+        ];
+    </script>
+
     <div class="stuff">
         <h1 style="font-size: 3rem;"><a href="https://discord.com/users/492729974026141697">Lyall's</a> stuff</h1>
     </div>
@@ -104,23 +120,15 @@
     </style>
 
     <script>
-        createLink("Jellyfin", "Netflix 😍😍😍😍😍", "./assets/jellyfin.png", "jellyfin");
-        createLink("Jellyfin Vue", "Netflix but with a different UI", "./assets/jellyfin-vue.png", "jellyfin-vue");
-        createLink("Jellyseerr", "Media requests for Jellyfin", "./assets/jellyseerr.svg", "jellyseerr");
+        links.forEach(i => createLink(i.name, i.description, i.iconPath, i.subdomain ? `${location.protocol}//${i.subdomain}.${location.host}` : i.path, document.getElementById("links")));
+        otherLinks.forEach(i => createLink(i.name, i.description, i.iconPath, i.subdomain ? `${location.protocol}//${i.subdomain}.${location.host}` : i.path, document.getElementById("otherlinks")));
 
-        createLink("Deluge", "TORRENTING!!!", "./assets/deluge.png", "deluge", true, true);
-        createLink("Portainer", "DOCKER CONTAINERS!!!", "./assets/portainer.svg", "portainer", true, true);
-        createLink("Radarr", "MOVIES!!!", "./assets/radarr.svg", "radarr", true, true);
-        createLink("Sonarr", "SHOWS!!!", "./assets/sonarr.svg", "sonarr", true, true);
-        createLink("Lidarr", "MUSIC!!!", "./assets/lidarr.svg", "lidarr", true, true);
-
-        function createLink(name, description, iconPath, path, isSubdomain = true, isOther) {
-            const links = document.getElementById("links");
+        function createLink(name, description, iconPath, path, parent) {
             const otherLinks = document.getElementById("otherlinks");
 
             const container = document.createElement("a");
             container.classList.add("linkcontainer");
-            container.href = isSubdomain ? `${location.protocol}//${path}.${location.host}` : path;
+            container.href = path;
             container.target = "_blank";
 
             if (iconPath) {
@@ -142,7 +150,7 @@
                 container.appendChild(descriptionSpan);
             }
 
-            (isOther ? otherLinks : links).appendChild(container);
+            parent.appendChild(container);
         }
     </script>
 </body>
