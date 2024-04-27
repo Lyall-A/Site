@@ -1,1 +1,44 @@
-test
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lyall's stuff</title>
+    </head>
+    <body>
+        <script>
+            createLink("Jellyfin", "/web/assets/img/icon-transparent.png", "media")
+
+            function createLink(name, iconPath, subdomain) {
+                const containerDiv = document.createElement("div");
+                containerDiv.classList.add("linkcontainer");
+                containerDiv.onclick = () => location.href = `${subdomain}.${location.host}`;
+
+                const img = document.createElement("img");
+                img.classlist.add("linkimg");
+                img.src = `${subdomain}.${location.host}${iconPath}`;
+                // img.src = `https://jellyfin.lyall.cam${iconPath}`;
+
+                const span = document.createElement("span");
+                span.classList.add("linkname");
+                span.innerHTML = name;
+
+                containerDiv.appendChild(img);
+                containerDiv.appendChild(span);
+
+                document.body.appendChild(containerDiv);
+            }
+        </script>
+
+        <style>
+            .linkcontainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .linkimg {
+                width: 100px;
+                height: 100px;
+            }
+        </style>
+    </body>
+</html>
