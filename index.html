@@ -4,18 +4,25 @@
         <title>Lyall's stuff</title>
     </head>
     <body>
-        <script>
-            createLink("Jellyfin", "/web/assets/img/icon-transparent.png", "media")
+        <div id="container">
 
-            function createLink(name, iconPath, subdomain) {
+        </div>
+
+        <script>
+            createLink("Jellyfin", "./assets/jellyfin.png", "https://jellyfin.lyall.cam");
+            createLink("Jellyfin Vue", "./assets/jellyfin-vue.png", "https://jellyfin-vue.lyall.cam");
+            createLink("Jellyseerr", "./assets/jellyseerr.svg", "https://jellyseerr.lyall.cam");
+
+            function createLink(name, iconPath, path, isSubdomain = false) {
+                const container = document.getElementById("container");
+
                 const containerDiv = document.createElement("div");
                 containerDiv.classList.add("linkcontainer");
-                containerDiv.onclick = () => location.href = `${subdomain}.${location.host}`;
+                containerDiv.onclick = () => location.href = isSubdomain ? `${path}.${location.host}` : path;
 
                 const img = document.createElement("img");
-                img.classlist.add("linkimg");
-                img.src = `${subdomain}.${location.host}${iconPath}`;
-                // img.src = `https://jellyfin.lyall.cam${iconPath}`;
+                img.classList.add("linkimg");
+                img.src = iconPath;
 
                 const span = document.createElement("span");
                 span.classList.add("linkname");
@@ -24,20 +31,60 @@
                 containerDiv.appendChild(img);
                 containerDiv.appendChild(span);
 
+                // container.appendChild(containerDiv);
                 document.body.appendChild(containerDiv);
             }
         </script>
 
         <style>
-            .linkcontainer {
+            :root {
+                --bg: rgb(66, 66, 66);
+                --lightgrey: rgb(146, 146, 146);
+                --white: rgb(238, 238, 238);
+            }
+
+            body {
+                overflow: hidden;
+                padding: 0;
+                margin: 0;
+                width: 100vw;
+                height: 100vh;
                 display: flex;
-                justify-content: center;
                 align-items: center;
+                justify-content: center;
+                background-color: var(--bg);
+            }
+
+            .linkcontainer {
+                margin: 10px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                width: 180px;
+                height: 200px;
+                padding: 20px;
+                cursor: pointer;
+                transition: transform 0.1s ease;
+                background-color: rgb(90, 90, 90);
+                border: 2px solid var(--lightgrey);
+                border-radius: 30px;
+            }
+
+            .linkcontainer:hover {
+                transform: scale(105%);
             }
 
             .linkimg {
                 width: 100px;
                 height: 100px;
+            }
+
+            .linkname {
+                font-family: Arial;
+                font-size: 2rem;
+                text-align: center;
+                margin-top: auto;
+                color: var(--white);
             }
         </style>
     </body>
