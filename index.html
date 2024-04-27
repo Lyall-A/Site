@@ -110,7 +110,7 @@
 
             const containerDiv = document.createElement("div");
             containerDiv.classList.add("linkcontainer");
-            containerDiv.onclick = () => location.href = isSubdomain ? `${path}.${location.host}` : path;
+            containerDiv.onclick = () => location.href = isSubdomain ? `${location.protocol}//${path}.${location.host}` : path;
 
             if (iconPath) {
                 const iconImg = document.createElement("img");
