@@ -26,7 +26,7 @@ a {
 
 a:hover { color: var(--lightgrey) }
 
-/* div { border: 1px dotted red; } */
+div { border: 1px dotted red; }
 
 .wrapper {
     display: flex;
