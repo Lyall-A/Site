@@ -5,162 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/main.css">
+    <script defer src="/main.js"></script>
     <title>Lyall's stuff</title>
 </head>
 
 <body>
-    <script>
-        const links = [
-            { name: "Jellyfin", description: "Basically self-hosted Netflix", iconPath: "/assets/jellyfin.png", subdomain: "jellyfin" },
-            { name: "Jellyfin Vue", description: "Self-hosted Netflix but with a different UI", iconPath: "/assets/jellyfin-vue.png", subdomain: "jellyfin-vue" },
-            { name: "Jellyseerr", description: "Media requests for Jellyfin", iconPath: "/assets/jellyseerr.svg", subdomain: "jellyseerr" },
-        ];
-
-        const otherLinks = [
-            { name: "Deluge", description: "TORRENTING!!!", iconPath: "/assets/deluge.png", subdomain: "deluge" },
-            { name: "Portainer", description: "DOCKER CONTAINERS!!!", iconPath: "/assets/portainer.svg", subdomain: "portainer" },
-            { name: "Radarr", description: "MOVIES!!!", iconPath: "/assets/radarr.svg", subdomain: "radarr" },
-            { name: "Sonarr", description: "SHOWS!!!", iconPath: "/assets/sonarr.svg", subdomain: "sonarr" },
-            { name: "Lidarr", description: "MUSIC!!!", iconPath: "/assets/lidarr.svg", subdomain: "lidarr" },
-        ];
-    </script>
-
-    <h1 class="heading"><a href="https://discord.com/users/492729974026141697">Lyall's</a> stuff</h1>
-
-    <div class="centered">
-        <div id="linkscontainer">
-            <h1>Links</h1>
-            <div id="links"></div>
+    <div class="wrapper">
+        <div class="header">
+            <h1><a href="https://discord.com/users/492729974026141697">Lyall's</a> stuff</h1>
         </div>
 
-        <div id="otherlinkscontainer" style="display: none;">
-            <h1>Other links (FOR LYALL ONLY!!!)</h1>
-            <div id="otherlinks"></div>
+        <div class="content">
+            <div>
+                <h1>Links</h1>
+                <div id="links1" class="links"></div>
+            </div>
+
+            <div id="other-links" style="display: none;">
+                <h1>Other links (FOR LYALL ONLY!!!)</h1>
+                <div id="links2" class="links"></div>
+            </div>
         </div>
     </div>
-
-    <style>
-        :root {
-            --bg: rgb(66, 66, 66);
-            --lightgrey: rgb(180, 180, 180);
-            --white: rgb(238, 238, 238);
-        }
-
-        body {
-            padding: 0;
-            margin: 0;
-            background-color: var(--bg);
-        }
-
-        * {
-            font-family: Arial;
-            text-align: center;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .centered {
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
-        }
-
-        .heading {
-            font-size: 3rem;
-        }
-
-        a {
-            color: var(--lightgrey);
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: rgb(212, 212, 212);
-        }
-
-        #links,
-        #otherlinks {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .linkcontainer {
-            overflow: hidden;
-            margin: 10px;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            width: 180px;
-            height: 200px;
-            padding: 20px;
-            transition: transform 0.1s ease;
-            background-color: rgb(90, 90, 90);
-            border: 2px solid var(--lightgrey);
-            border-radius: 30px;
-        }
-
-        .linkcontainer:hover {
-            transform: scale(105%);
-        }
-
-        .linkicon {
-            width: 100px;
-        }
-
-        .linkname {
-            font-size: 2rem;
-            margin-top: auto;
-        }
-
-        .linkdescription {
-            color: var(--lightgrey);
-            margin-top: 10px;
-            font-size: 1rem;
-        }
-    </style>
-
-    <script>
-        links.forEach(i => createLink(i.name, i.description, i.iconPath, i.subdomain ? `${location.protocol}//${i.subdomain}.${location.host}` : i.path, document.getElementById("links")));
-        otherLinks.forEach(i => createLink(i.name, i.description, i.iconPath, i.subdomain ? `${location.protocol}//${i.subdomain}.${location.host}` : i.path, document.getElementById("otherlinks")));
-
-        let bgClicks = 0;
-        document.body.onclick = () => {
-            bgClicks++;
-            if (bgClicks >= 5) document.getElementById("otherlinkscontainer").style.display = "block";
-            setTimeout(() => bgClicks--, 1000);
-        }
-
-        function createLink(name, description, iconPath, path, parent) {
-            const otherLinks = document.getElementById("otherlinks");
-
-            const container = document.createElement("a");
-            container.classList.add("linkcontainer");
-            container.href = path;
-            container.target = "_blank";
-
-            if (iconPath) {
-                const iconImg = document.createElement("img");
-                iconImg.classList.add("linkicon");
-                iconImg.src = iconPath;
-                container.appendChild(iconImg);
-            }
-
-            const nameSpan = document.createElement("span");
-            nameSpan.classList.add("linkname");
-            nameSpan.innerHTML = name;
-            container.appendChild(nameSpan);
-
-            if (description) {
-                const descriptionSpan = document.createElement("span");
-                descriptionSpan.classList.add("linkdescription");
-                descriptionSpan.innerHTML = description;
-                container.appendChild(descriptionSpan);
-            }
-
-            parent.appendChild(container);
-        }
-    </script>
 </body>
 
 </html>
