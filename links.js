@@ -8,7 +8,7 @@ const links = {
         { name: "GitHub", path: "https://github.com/Lyall-A", iconPath: "/assets/github.svg" },
         { name: "Discord", path: "https://discord.com/users/492729974026141697", iconPath: "/assets/discord.svg" },
         { name: "Steam", path: "https://steamcommunity.com/id/darwinpolio/", iconPath: "/assets/steam.svg" },
-        { name: "BeatLeader", path: "https://beatleader.xyz/u/76561198987282778", iconPath: "/assets/beatleader.webp" },
+        { name: "BeatLeader", path: "https://beatleader.xyz/u/76561198987282778", iconPath: "/assets/beatleader.png" },
         { name: "ScoreSaber", path: "https://scoresaber.com/u/76561198987282778", iconPath: "/assets/scoresaber.svg" },
     ],
     "Useful links": [
@@ -16,7 +16,7 @@ const links = {
         { name: "OpenCore Sanity Checker", description: "Check if your hackintosh config is good", path: "https://sc.ocutils.me/" },
     ],
     "LYALL ONLY!!!!!": [
-        { name: "Deluge", description: "TORRENTING!!!", iconPath: "/assets/deluge.png", subdomain: "deluge" },
+        { name: "Deluge", description: "TORRENTING!!!", iconPath: "/assets/deluge.svg", subdomain: "deluge" },
         { name: "Portainer", description: "DOCKER CONTAINERS!!!", iconPath: "/assets/portainer.svg", subdomain: "portainer" },
         { name: "Radarr", description: "MOVIES!!!", iconPath: "/assets/radarr.svg", subdomain: "radarr" },
         { name: "Sonarr", description: "SHOWS!!!", iconPath: "/assets/sonarr.svg", subdomain: "sonarr" },
