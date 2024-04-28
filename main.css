@@ -44,7 +44,7 @@ a:hover { color: var(--lightgrey) }
     font-size: 3rem;
 }
 
-.content {
+#content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +64,7 @@ a:hover { color: var(--lightgrey) }
     flex-direction: column;
     align-items: center;
     width: 180px;
-    height: 200px;
+    max-height: 200px;
     padding: 20px;
     transition: transform 0.1s ease;
     background-color: rgb(90, 90, 90);
@@ -78,11 +78,11 @@ a:hover { color: var(--lightgrey) }
 
 .link-icon {
     width: 100px;
+    margin-bottom: 20px;
 }
 
 .link-name {
     font-size: 2rem;
-    margin-top: auto;
 }
 
 .link-description {
