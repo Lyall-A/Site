@@ -18,6 +18,7 @@ const links = {
     "LYALL ONLY!!!!!": [
         { name: "Deluge", description: "TORRENTING!!!", iconPath: "/assets/deluge.svg", subdomain: "deluge" },
         { name: "Portainer", description: "DOCKER CONTAINERS!!!", iconPath: "/assets/portainer.svg", subdomain: "portainer" },
+        { name: "YoutubeDL-Material", description: "YOUTUBE DOWNLOADER!!!", iconPath: "/assets/youtubedl-material.png", subdomain: "youtubedl-material" },
         { name: "Radarr", description: "MOVIES!!!", iconPath: "/assets/radarr.svg", subdomain: "radarr" },
         { name: "Sonarr", description: "SHOWS!!!", iconPath: "/assets/sonarr.svg", subdomain: "sonarr" },
         { name: "Lidarr", description: "MUSIC!!!", iconPath: "/assets/lidarr.svg", subdomain: "lidarr" }
